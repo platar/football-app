@@ -1,6 +1,11 @@
 import React, {Component} from 'react';
 import Players from './Players'
 import AddPlayer from './AddPlayer'
+import Navbar from './components/NavBar'
+import {BrowserRouter, Route} from 'react-router-dom'
+import Home from './components/Home'
+import About from './components/About'
+import Contact from './components/Contact'
 
 
 class App extends Component {
@@ -31,15 +36,31 @@ addPlayer = (player) => {
 
 }
 
+  // render() {
+  //   return (
+  //     <div className="football-app container">
+  //     <h1 className="center blue-text">Players</h1>
+  //     <Players players={this.state.players} deletePlayer={this.deletePlayer}/>
+  //     <AddPlayer addPlayer={this.addPlayer}/>
+  //    </div>
+  //   )
+  // }
+
   render() {
     return (
-      <div className="football-app container">
-      <h1 className="center blue-text">Players</h1>
-      <Players players={this.state.players} deletePlayer={this.deletePlayer}/>
-      <AddPlayer addPlayer={this.addPlayer}/>
+      <BrowserRouter>
+      <div className="App">
+      <Navbar/>
+      <Route exact path="/" component={Home} />
+      <Route path="/about" component={About} />
+      <Route path="/contact" component={Contact} />
      </div>
+
+     </BrowserRouter>
     )
   }
+
+
 }
 
 export default App;
